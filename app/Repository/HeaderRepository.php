@@ -11,12 +11,7 @@ use App\Header;
 
 class HeaderRepository
 {
-    /**
-     * Get all of the tasks for a given user.
-     *
-     * @param  User $user
-     * @return Collection
-     */
+
     public function getHeader()
     {
         $header = Header::find(1);;

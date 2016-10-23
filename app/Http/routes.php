@@ -17,19 +17,21 @@ Route::get('/', function () {
 
 
 
-Route::get('/privacy', function () {
-    return view('privacy');
-});
+Route::get('/privacy','PrivacyController@show');
 
 
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
-
 Route::get('/header', 'HeaderController@index');
 
 Route::post('/header', 'HeaderController@update');
 Route::get('/conditions', 'ConditionController@index');
-
 Route::post('/conditions', 'ConditionController@update');
+
+Route::get('/tecnology', 'TecnologyController@index');
+Route::post('/tecnology', 'TecnologyController@create');
+
+Route::put('/tecnology/{id}', 'TecnologyController@enable');
+Route::delete('/tecnology/{id}', 'TecnologyController@disable');

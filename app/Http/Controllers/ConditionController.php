@@ -9,17 +9,17 @@ use App\Http\Requests;
 
 class ConditionController extends Controller
 {
-    protected $conditionRepository;
+    protected $headerRepository;
 
     public function __construct(ConditionRepository $repository)
     {
         $this->middleware('auth');
-        $this->conditionRepository=$repository;
+        $this->headerRepository=$repository;
     }
 
     public function  index(Request $request){
         return view('conditions', [
-            'condition' => $this->conditionRepository->getCondition(),
+            'condition' => $this->headerRepository->getCondition(),
             'successList'=>null
         ]);
     }
@@ -29,13 +29,15 @@ class ConditionController extends Controller
             'condition' => 'required',
         ]);
 
-        $condition = $this->conditionRepository->getCondition();
+        $condition = $this->headerRepository->getCondition();
         $condition->conditionContent=$request->condition;
         $condition->save();
 
         return view('conditions', [
-            'condition' => $this->conditionRepository->getCondition(),
+            'condition' => $this->headerRepository->getCondition(),
             'successList'=>'Actualizada Condiciones de uso correctame!'
         ]);
     }
+
+
 }

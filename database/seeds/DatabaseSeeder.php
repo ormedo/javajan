@@ -23,5 +23,9 @@ class DatabaseSeeder extends Seeder
             'conditionContent' => '<h1>Texto de condiciones de prueba<h1>
                                  <p>parrafo1</p>',
         ]);
+        DB::table('tecnologies')->insert([
+          'nombre'=>'PHP',
+          'activo'=>1
+        ]);
     }
 }

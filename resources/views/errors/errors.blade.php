@@ -1,5 +1,5 @@
 
-@if (count($errors) > 0)
+@if (count($errors) > 0 or ( isset($errorMessage) and $errorMessage != ''))
     <!-- Form Error List -->
     <div class="alert alert-danger">
         <strong>Whoops! Something went wrong!</strong>
@@ -8,6 +8,9 @@
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
+                @if ($errorMessage != '')
+                    <li>{{ $errorMessage }}</li>
+                @endif
         </ul>
     </div>
 @endif
