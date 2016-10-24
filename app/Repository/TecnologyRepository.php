@@ -18,7 +18,10 @@ class TecnologyRepository
     }
     public function exist($nombre)
     {
-        $tecnologies =Tecnology::where('nombre', $nombre)
+        $tecnologies =Tecnology::where([
+            'nombre'=> $nombre,
+            'activo'=>1,
+            ])
             ->orderBy('nombre', 'desc')
             ->get();
 
