@@ -24,8 +24,8 @@ class DatabaseSeeder extends Seeder
                                  <p>parrafo1</p>',
         ]);
         DB::table('tecnologies')->insert([
-          'nombre'=>'PHP',
-          'activo'=>1
+          'name'=>'PHP',
+          'active'=>1
         ]);
     }
 }

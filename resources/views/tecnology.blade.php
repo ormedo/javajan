@@ -64,8 +64,8 @@
                             <tr>
 
                                 <td >{{$tecnology->id}}</td>
-                                <td>{{$tecnology->nombre}}</td>
-                                @if($tecnology->activo>0)
+                                <td>{{$tecnology->name}}</td>
+                                @if($tecnology->active>0)
                                     <td><span class="glyphicon glyphicon-ok"/></td>
                                     <td>
                                         <form action="/tecnology/{{ $tecnology->id }}" method="POST">

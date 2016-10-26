@@ -38,8 +38,8 @@ class TecnologyController extends Controller
             $this->errors='La tecnología ya existe.';
         }else{
             $newTecnology=new Tecnology();
-            $newTecnology->nombre=$request->nombre;
-            $newTecnology->activo=1;
+            $newTecnology->name=$request->nombre;
+            $newTecnology->active=1;
             $newTecnology->save();
             $this->success="Tecnología creada Correctamente";
         }
@@ -54,7 +54,7 @@ class TecnologyController extends Controller
     public function disable(Request $request){
 
         $tecnology=Tecnology::findOrFail($request->id);
-        $tecnology->activo=0;
+        $tecnology->active=0;
         $tecnology->save();
 
         return view('tecnology',[
@@ -67,7 +67,7 @@ class TecnologyController extends Controller
     public function enable(Request $request){
 
         $tecnology=Tecnology::findOrFail($request->id);
-        $tecnology->activo=1;
+        $tecnology->active=1;
         $tecnology->save();
 
         return view('tecnology',[

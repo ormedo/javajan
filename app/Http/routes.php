@@ -11,12 +11,8 @@
 |
 */
 Route::get('/freelance', 'FreelanceRegistrationController@index');
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-
+Route::post('/freelance', 'FreelanceRegistrationController@create');
+Route::get('/', function () { return view('welcome'); });
 Route::get('/privacy','PrivacyController@show');
 
 
@@ -35,3 +31,9 @@ Route::post('/tecnology', 'TecnologyController@create');
 
 Route::put('/tecnology/{id}', 'TecnologyController@enable');
 Route::delete('/tecnology/{id}', 'TecnologyController@disable');
+
+Route::get('/programmers', 'ProgrammersFilterController@index');
+Route::post('/programmers', 'ProgrammersFilterController@search');
+
+Route::get('/programmers/{id}', 'ProgrammersDetailsController@index');
+Route::post('/programmers/{id}', 'ProgrammersDetailsController@update');

@@ -17,58 +17,66 @@
     <div class="page-header " style="text-align: center">
         <h1>Freelance Registration </h1>
     </div>
-    <form class="form-horizontal" role="form">
-
+@include('errors.errors')
+@include('errors.success')
         <div class="form-group">
             <label for="firstName" class="col-sm-3 control-label">Full Name</label>
             <div class="col-sm-9">
-                <input required type="text" id="firstName" placeholder="Full Name" class="form-control" autofocus>
+                {!!$headerContent->headerContent!!}
+            </div>
+        </div>
+    <form class="form-horizontal" method="POST" action="{{url('/freelance')}}" role="form">
+        {{ csrf_field() }}
+        <div class="form-group">
+            <label for="firstName" class="col-sm-3 control-label">Full Name</label>
+            <div class="col-sm-9">
+                <input required type="text" id="firstName" name="firstName" placeholder="Full Name" class="form-control" autofocus>
                 <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span>
             </div>
         </div>
         <div class="form-group">
             <label for="dni" class="col-sm-3 control-label">DNI</label>
             <div class="col-sm-9">
-                <input required type="text" id="dni" placeholder="CIF/NIF" class="form-control" autofocus>
+                <input required type="text" id="dni"  name="dni" placeholder="CIF/NIF" class="form-control" autofocus>
             </div>
         </div>
         <div class="form-group">
             <label for="location" class="col-sm-3 control-label">Location</label>
             <div class="col-sm-9">
-                <input required type="text" id="location" placeholder="location" class="form-control" autofocus>
+                <input required type="text" id="location" name="location"  placeholder="location" class="form-control" autofocus>
             </div>
         </div>
         <div class="form-group">
             <label for="country" class="col-sm-3 control-label">Country</label>
             <div class="col-sm-9">
-                <input required type="text" id="country" placeholder="country" class="form-control" autofocus>
+                <input required type="text" id="country" name="country" placeholder="country" class="form-control" autofocus>
             </div>
         </div>
 
         <div class="form-group">
             <label for="birthDate" class="col-sm-3 control-label">Date of Birth</label>
             <div class="col-sm-9">
-                <input required type="date" id="birthDate" class="form-control">
+                <input required type="date" id="birthDate" name="birthDate"  class="form-control">
             </div>
         </div>
         <div class="form-group">
             <label for="email" class="col-sm-3 control-label">Email</label>
             <div class="col-sm-9">
-                <input required type="email" id="email" placeholder="Email" class="form-control">
+                <input  type="email" id="email" name="email" placeholder="Email" class="form-control">
                 <span class="help-block">Fill Separated By ';' eg.: foo@bar.com; lore@itsum.com</span>
             </div>
         </div>
         <div class="form-group">
             <label for="phone" class="col-sm-3 control-label">Phone number</label>
             <div class="col-sm-9">
-                <input required type="text" id="phone" placeholder="Phone Number" class="form-control">
+                <input required type="text" id="phone" name="phone" placeholder="Phone Number" class="form-control">
                 <span class="help-block">Fill Separated By ';' eg.: XXXXXXXX;YYYYYYYYY </span>
             </div>
         </div>
         <div class="form-group">
             <label for="externalLink" class="col-sm-3 control-label">External Links</label>
             <div class="col-sm-9">
-                <input type="text" id="externalLink" placeholder="External Links" class="form-control">
+                <input type="text" id="externalLink" name="externalLink" placeholder="External Links" class="form-control">
                 <span class="help-block">Fill Separated By ';' eg.: cv;web;linkedin </span>
             </div>
         </div>
@@ -97,7 +105,7 @@
                 <div class="col-sm-9">
                     <select class="selectpicker" data-live-search="true" id="tecnology" name="tecnology">
                         @foreach($tecnologies as $tecnology)
-                                <option value="{{$tecnology->nombre}}">{{$tecnology->nombre}}</option>
+                                <option value="{{$tecnology->name}}">{{$tecnology->name}}</option>
                         @endforeach
                     </select>
                     <span class="help-block">Select a Tecnology</span>
@@ -108,7 +116,6 @@
                 <div class="col-sm-9">
                     <input style="display: inline;width: 80%;" type="text" id="newTecnology" placeholder="New Tecnology" class="form-control">
                     <button name="addTecnology" id="addTecnology" type="button" class="btn btn-primary ">Add</button>
-
                 </div>
             </div>
             <div class="form-group">
@@ -124,7 +131,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <table required id ="table1"  class="table" cellspacing="0" width="90%">
+                <table required id="table1" name="tableExperience[]" class="table" cellspacing="0" width="90%">
                     <thead>
                         <tr >
                             <th>Number</th>
@@ -150,7 +157,7 @@
         <div class="form-group">
             <label for="language" class="col-sm-3 control-label">Languages</label>
             <div class="col-sm-9">
-                <select required class="selectpicker" data-live-search="true" multiple name="language">
+                <select required class="selectpicker" data-live-search="true" multiple name="language[]">
                     <option>  Mandarin</option>
                     <option>  Spanish</option>
                     <option>  English</option>
@@ -258,14 +265,14 @@
         <div class="form-group">
             <label for="minprice" class="col-sm-3 control-label">Price per Hour. Min</label>
             <div class="col-sm-9">
-                <input required type="number" step="0.01" id="minprice" placeholder="Minimun Price per Hour" class="form-control">
+                <input required type="number" step="0.01" id="minprice" name="minprice" placeholder="Minimun Price per Hour" class="form-control">
                 <span class="help-block">Minium price per hour for Javajan </span>
             </div>
         </div>
         <div class="form-group">
             <label for="normalprice" class="col-sm-3 control-label">Price per Hour. Normal</label>
             <div class="col-sm-9">
-                <input required type="number" step="0.01" id="normalprice" placeholder="Normal Price per Hour" class="form-control">
+                <input required type="number" step="0.01" id="normalprice"  name="normalprice"  placeholder="Normal Price per Hour" class="form-control">
                 <span class="help-block">Normal price per hour </span>
             </div>
         </div>
@@ -282,6 +289,9 @@
             <div class="col-sm-9 col-sm-offset-3">
                 <button type="submit" class="btn btn-primary btn-block">Register</button>
             </div>
+        </div>
+        <div id="hiddens">
+            <input type="hidden"  id="comments"  name="comments"  placeholder="Comments" class="form-control"  >
         </div>
     </form> <!-- /form -->
     <script>
@@ -310,11 +320,15 @@
             var year=$('#experience').val();
             if(exp!='' &&grade!=''&& year!=''){
                 table.rows.add( [[
-                    table.rows.length+1,
+                    table.rows().indexes().length+1,
                     exp,
                     grade,
                     year
                 ]]).draw();
+                $('#hiddens').append("<input type='hidden' name='tecnologies_"+table.rows().indexes().length+"' value='"+exp+"' />");
+                $('#hiddens').append("<input type='hidden' name='grades_"+table.rows().indexes().length+"'' value='"+grade+"' />");
+                $('#hiddens').append("<input type='hidden' name='experiences_"+table.rows().indexes().length+"'' value='"+year+"' />");
+                $('#hiddens').append("<input type='hidden' name='Tablelength' value='"+table.rows().indexes().length+"' />");
             }else{
                 alert("Must complet your full experience!");
             }

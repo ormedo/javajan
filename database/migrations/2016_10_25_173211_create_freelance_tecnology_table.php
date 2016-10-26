@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTecnologyTable extends Migration
+class CreateFreelanceTecnologyTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,15 @@ class CreateTecnologyTable extends Migration
      */
     public function up()
     {
-        Schema::create('tecnologies', function (Blueprint $table) {
-            $table->increments('id');
-            $table->text('name');
-            $table->boolean('active');
+
+        Schema::create('freelance_tecnology', function (Blueprint $table) {
+            $table->integer('freelance_id')->unsigned();
+            $table->integer('tecnology_id')->unsigned();
+            $table->text('experience');
+            $table->text('grade');
             $table->timestamps();
         });
+
     }
 
     /**
@@ -27,6 +30,6 @@ class CreateTecnologyTable extends Migration
      */
     public function down()
     {
-        Schema::drop('tecnologies');
+        Schema::drop('freelance_tecnology');
     }
 }

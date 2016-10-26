@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-       // Schema::insert('users',['id'=>1,'email'=>"javajan@javajan.com",'password'=>bcrypt('javajan')]);
+
     }
 
     /**

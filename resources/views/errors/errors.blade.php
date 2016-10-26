@@ -8,7 +8,7 @@
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
-                @if ($errorMessage != '')
+                @if (( isset($errorMessage) and $errorMessage != ''))
                     <li>{{ $errorMessage }}</li>
                 @endif
         </ul>
