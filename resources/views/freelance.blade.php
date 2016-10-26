@@ -20,7 +20,6 @@
 @include('errors.errors')
 @include('errors.success')
         <div class="form-group">
-            <label for="firstName" class="col-sm-3 control-label">Full Name</label>
             <div class="col-sm-9">
                 {!!$headerContent->headerContent!!}
             </div>
