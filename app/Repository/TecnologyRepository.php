@@ -54,7 +54,7 @@ class TecnologyRepository
             'active'=>1,
             ])
             ->orderBy('name', 'desc')
-            ->get();
+            ->first();
 
         return (count($tecnologies)>0);
     }

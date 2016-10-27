@@ -2,6 +2,7 @@
 namespace App\Repository;
 use App\Freelance;
 use App\Tecnology;
+use App\FreelanceTecnology;
 use Illuminate\Http\Request;
 
 class FreelanceRepository{
@@ -32,11 +33,14 @@ class FreelanceRepository{
     public function saveRelations(Freelance $freelance,Request $request){
 
         $tableIndex=$request->Tablelength;
+        FreelanceTecnology::where( 'freelance_id',"=",$freelance->id)->delete();
         for($x=1;$x<=$tableIndex;$x++){
             $grade=$request["grades_".$x];
             $experience=$request["experiences_".$x];
             $freelance2=new Freelance();
             $tecnology=$this->tecnologyRepository->getOrCreate($request["tecnologies_".$x]);
+           
+
             $freelance2->tecnologies()->save($tecnology,[
                 'freelance_id'=>$freelance->id,
                 'grade'=>$grade,

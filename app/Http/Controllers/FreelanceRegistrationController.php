@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Freelance;
+use App\User;
 use App\Mapper\FreelanceFormMapper;
 use App\Repository\FreelanceRepository;
 use App\Repository\HeaderRepository;
@@ -58,7 +59,7 @@ class FreelanceRegistrationController extends Controller
         $freelance->save();
 
         $this->freelanceRepository->saveRelations( $freelance, $request);
-
+       // mail ( User::find(1)->email, "New Registration!" , $freelance->name." has successfully registered;");
         return view('freelance',[
                 'tecnologies'=> $this->tecnologyRepository->getAllActiveTecnologies(),
                 'errorMessage'=>'',
