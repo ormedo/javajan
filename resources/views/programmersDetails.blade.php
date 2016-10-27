@@ -162,13 +162,13 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="minprice" class="col-sm-3 control-label">Price per Hour. Min</label>
+            <label for="minprice" class="col-sm-3 control-label">Price per &euro;/Hour. Min</label>
             <div class="col-sm-9">
                 <input value="{{$programmer->priceperhourmin}}"  type="number" step="0.01" id="minprice" name="minprice" placeholder="Minimun Price per Hour" class="form-control">
             </div>
         </div>
         <div class="form-group">
-            <label for="normalprice" class="col-sm-3 control-label">Price per Hour. Normal</label>
+            <label for="normalprice" class="col-sm-3 control-label">Price per &euro;/Hour. Normal</label>
             <div class="col-sm-9">
                 <input value="{{$programmer->priceperhournormal}}" type="number" step="0.01" id="normalprice"  name="normalprice"  placeholder="Normal Price per Hour" class="form-control">
             </div>

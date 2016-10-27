@@ -213,13 +213,13 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="minprice" class="col-sm-3 control-label">Price per Hour. Min</label>
+            <label for="minprice" class="col-sm-3 control-label">Price per &euro;/Hour. Min</label>
             <div class="col-sm-9">
                 <input  type="number" step="0.01" id="minprice" name="minprice" placeholder="Minimun Price per Hour" class="form-control">
             </div>
         </div>
         <div class="form-group">
-            <label for="normalprice" class="col-sm-3 control-label">Price per Hour. Normal</label>
+            <label for="normalprice" class="col-sm-3 control-label">Price per &euro;/Hour. Normal</label>
             <div class="col-sm-9">
                 <input  type="number" step="0.01" id="normalprice"  name="normalprice"  placeholder="Normal Price per Hour" class="form-control">
             </div>
@@ -231,56 +231,58 @@
         </div>
 
     </form> <!-- /form -->
-    <form>
+
         <div class="form-group">
             <table  id="table1" name="table1" class="display"  cellspacing="0" width="90%">
                 <thead>
                 <tr>
-                    <th>ID</th>
+                    <th></th>
                     <th>Name</th>
                     <th>email</th>
-                    <th>Location</th>
+                    <th>Tecnology</th>
                     <th>externalLink</th>
                     <th>Comment</th>
-                    <th></th>
+
                 </tr>
                 </thead>
                 <tfoot>
                 <tr>
-                    <th>ID</th>
+                    <th></th>
                     <th>Name</th>
                     <th>email</th>
-                    <th>Location</th>
+                    <th>Tecnolgy</th>
                     <th>externalLink</th>
                     <th>Comment</th>
-                    <th></th>
+
                 </tr>
                 </tfoot>
                 <tbody>
                 @foreach($programmers as $programmer)
                     <tr>
-                        <td>{{$programmer->id}}</td>
+                        <td><form action="/programmers/{{ $programmer->id}}" name="details" method="GET">
+                                <button type="submit" class="btn btn-primary btn-block">Details</button>
+                            </form></td>
                         <td>{{$programmer->name}}</td>
                         <td>{{$programmer->emails}}</td>
-                        <td>{{$programmer->location}}</td>
-                        <td>{{$programmer->externalLink}}</td>
-                        <td>{{$programmer->comments}}</td>
                         <td>
-                            <form action="/programmers/{{ $programmer->id}}" method="GET">
-                                <button type="submit" class="btn btn-primary btn-block">Details</button>
-                            </form>
+                            @foreach($programmer->tecnologies as $tecnology)
+                               {{$tecnology->name}},
+                            @endforeach
                         </td>
+                        <td>{{$programmer->externallinks}}</td>
+                        <td>{{$programmer->comments}}</td>
+
                     </tr>
                 @endforeach
                 </tbody>
             </table>
         </div>
         </div>
-    </form>
+
     <script>
         $(document).ready(function(){
 
-            $('#table1').DataTable( );
+            $('#table1').DataTable();
 
         });
 
