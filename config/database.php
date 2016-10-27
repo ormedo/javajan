@@ -26,7 +26,8 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    //'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -69,11 +70,11 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'javajan'),
-            'username' => env('DB_USERNAME', 'javajan'),
-            'password' => env('DB_PASSWORD', 'javajan'),
+            'host' => env('DB_HOST', 'ec2-54-235-76-103.compute-1.amazonaws.com'),
+            'port' => env('DB_PORT', '5432'),
+            'database' => env('DB_DATABASE', 'd8ekt8b9s5ihrv'),
+            'username' => env('DB_USERNAME', 'blftmzbuikbsec'),
+            'password' => env('DB_PASSWORD', '2-gtiYq2kFce92Bet6nfo-l29z'),
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
